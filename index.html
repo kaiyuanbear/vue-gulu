@@ -6,8 +6,35 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hello world</title>
+    <style>
+        :root {
+            --button-height: 32px;
+            --font-size: 14px;
+        }
+        .g-button {
+            height: var(--button-height);
+            font-size: var(--font-size)
+        }
+    </style>
 </head>
 <body>
+<div id="app">
+    {{msg}}
+    <g-button></g-button>
+</div>
 
+
+<script src="node_modules/vue/dist/vue.min.js"></script>
+<script src="./g-button.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                msg: '晚上好，肥奶咪'
+            }
+        }
+    })
+</script>
 </body>
 </html>
