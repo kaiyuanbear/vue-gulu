@@ -1,10 +1,30 @@
 <template>
-    <button class="g-button">按钮</button>
+    <button class="g-button" :class="iconPosition">
+        <g-icon class="icon" :name="iconName"></g-icon>
+        <div class="slot-box">
+            <slot></slot>
+        </div>
+    </button>
 </template>
 
 <script>
     export default {
-        name: "g-button"
+        name: "g-button",
+        props: {
+            iconName: {},
+            iconPosition: {
+                type: String,
+                default: 'left',
+                validator (value) {
+                    return value === 'left' || value === 'right'
+                }
+            }
+        },
+        data() {
+            return {
+                
+            }
+        }
     }
 </script>
 
@@ -16,6 +36,23 @@
         border-radius: var(--border-radius);
         border: 1px solid var(--border-color);
         background: var(--button-bg);
+        display: flex;
+        &.left {
+            .icon {
+                order: 1
+            }
+            .slot-box {
+                order: 2
+            }
+        }
+        &.right {
+            .icon {
+                order: 2
+            }
+            .slot-box {
+                order: 1
+            }
+        }
         &:hover {
             border-color: var(--border-color);
         }
@@ -26,5 +63,6 @@
             outline: none;
         }
     }
+
 
 </style>
